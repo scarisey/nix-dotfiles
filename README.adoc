@@ -1,3 +1,7 @@
 = Nix's home manager dotfiles
 
 WIP
+
+```
+nix run "ssh+git:github.com/scarisey/nix-dotfiles?ref=feat/impl" -- switch --flake "ssh+git:github.com/scarisey/nix-dotfiles?ref=feat/impl"
+```
