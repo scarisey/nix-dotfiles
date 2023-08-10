@@ -1,15 +1,12 @@
-#!/bin/sh
+#!/bin/bash
 SCRIPTNAME=$(basename "$0")
 RUNDIR=$(dirname "$(realpath $0)")
 
-if ! command -v nix &> /dev/null
-then
-  echo "Nix is not installed"
-  curl --proto '=https' --tlsv1.2 -sSf -L https://install.determinate.systems/nix | sh -s -- install
-  mkdir -p ~/.local/state/nix/profiles/
-  echo "Please run install.sh again"
-  exit 0
+if [[ "$(command -v nix)" = "" ]]; then
+	echo "Nix is not installed"
+	curl --proto '=https' --tlsv1.2 -sSf -L https://install.determinate.systems/nix | sh -s -- install
+	mkdir -p ~/.local/state/nix/profiles/
+else
+	echo "Nix already installed"
 fi
-
-
-nix run ${RUNDIR} switch
+exit 0
