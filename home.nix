@@ -36,7 +36,6 @@
     gifsicle
     rclone
     cryfs
-    neofetch
 
     #gui
     nixgl.nixGLIntel #FIXME only for laptop
@@ -95,8 +94,6 @@
     enable = true;
     enableCompletion = true;
     enableAutosuggestions = true;
-
-    initExtra = "neofetch";
 
     history = {
       share = true; # false -> every terminal has it's own history
