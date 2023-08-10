@@ -1,4 +1,6 @@
-{pkgs,...}: { 
+{pkgs,lib,config,...}:let
+    npmGlobalDir = "$HOME/.npm-global";
+in { 
   programs.home-manager.enable = true;
   home.username = "sylvain";
   home.homeDirectory = "/home/sylvain";
@@ -66,11 +68,12 @@
     cargo
   ];
 
-
   home.sessionVariables = {
     GITDIR = "$HOME/git";
     EDITOR = "vim";
   };
+
+  home.activation.npmSetPrefix = lib.hm.dag.entryAfter [ "reloadSystemd" ] "$DRY_RUN_CMD ${config.home.path}/bin/npm $VERBOSE_ARG set prefix ${npmGlobalDir}"; #then npm -g install should work
 
   home.shellAliases = {
     dotfiles="git --git-dir $GITDIR/dotfiles/ --work-tree=$HOME";
