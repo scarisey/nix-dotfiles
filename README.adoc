@@ -1,7 +1,30 @@
 = Nix's home manager dotfiles
 
-WIP
+Handle Zsh config and package installation. Dotfiles are managed with a private git bare repository using `dotfiles` shell alias.
+
+== Installing nix package manager
+
+Running `install.sh` will install the nix's determinate system solution.
+
+== Home manager
+
+=== From github
 
 ```
-nix run "ssh+git:github.com/scarisey/nix-dotfiles?ref=feat/impl" -- switch --flake "ssh+git:github.com/scarisey/nix-dotfiles?ref=feat/impl"
+nix run "git:github.com/scarisey/nix-dotfiles" -- switch --flake "git:github.com/scarisey/nix-dotfiles"
+```
+
+=== From repo
+
+```
+git clone git@github.com/scarisey/nix-dotfiles.git
+cd nix-dotfiles
+./switch.sh
+```
+
+== Init dotfiles
+
+
+```
+initDotfiles git@github.com/scarisey/aPrivateDotfilesExample.git
 ```
