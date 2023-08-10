@@ -6,7 +6,7 @@
   targets.genericLinux.enable = true;
   fonts.fontconfig.enable = true;
   home.packages = with pkgs; [
-    (nerdfonts.override { fonts = [ "FiraCode" "FiraMono" "DroidSansMono" "Hack" "Hasklig" "Meslo" ]; })
+    (nerdfonts.override { fonts = [ "FiraCode" "FiraMono" "DroidSansMono" "Hack" "Hasklig" "Meslo" "UbuntuMono" ]; })
 
     git
     git-lfs
