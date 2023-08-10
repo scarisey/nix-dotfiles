@@ -115,6 +115,8 @@ in {
         "sbt"
         "bgnotify"
         "fzf"
+        "zsh-interactive-cd"
+        "z"
       ];
 
     };
@@ -125,11 +127,10 @@ in {
     enableZshIntegration = true;
 
   };
-  programs.fzf.enable=true;
-  programs.zoxide = {
-    enable = true;
-    enableZshIntegration = true;
-  };  
+  programs.fzf = {
+    enable=true;
+    enableZshIntegration=true;
+  };
   programs.direnv = {
     enable = true;
     nix-direnv.enable = true;
