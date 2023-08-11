@@ -22,7 +22,6 @@ in {
     exa
     jq
     yq
-    vim
     neovim
     nil #  nix LSP
     ripgrep #recursive search fs for a regex
@@ -154,6 +153,11 @@ in {
       set-option -g automatic-rename on
       set-option -g automatic-rename-format '#{b:pane_current_path}'
     '';
+  };
+  programs.vim = {
+    enable = true;
+    plugins = with pkgs.vimPlugins; [ vim-airline vim-airline-themes dracula-vim vim-surround ];
+    extraConfig = "${ builtins.readFile ./vim/vimrc }";
   };
 
 }
