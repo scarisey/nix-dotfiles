@@ -14,7 +14,6 @@ in {
     git-lfs
     curl
     dos2unix
-    tmux
     ranger
     thefuck
     peco #querying input
@@ -139,6 +138,22 @@ in {
     enable = true;
     nix-direnv.enable = true;
     enableZshIntegration = true;
+  };
+  programs.tmux = {
+    enable = true;
+    prefix = "C-a";
+    terminal = "screen-256color";
+    clock24 = true;
+    customPaneNavigationAndResize = true;
+    escapeTime = 10;
+    historyLimit = 100000;
+    mouse = true;
+    extraConfig = ''
+      source-file "$HOME/.gruvbox.tmuxtheme"
+      set-option -g status-interval 5
+      set-option -g automatic-rename on
+      set-option -g automatic-rename-format '#{b:pane_current_path}'
+    '';
   };
 
 }
