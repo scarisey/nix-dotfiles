@@ -38,6 +38,7 @@ in {
     gifsicle
     rclone
     cryfs
+    cht-sh
 
     #gui
     nixgl.nixGLIntel #FIXME only for laptop
@@ -90,6 +91,9 @@ in {
 
     #sbt
     sbtc="sbt --client";
+
+    #cheat.sh
+    cht="cht.sh";
 
   };
 
