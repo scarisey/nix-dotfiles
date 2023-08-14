@@ -14,6 +14,7 @@ in {
     git-lfs
     curl
     dos2unix
+    screen
     ranger
     thefuck
     peco #querying input
