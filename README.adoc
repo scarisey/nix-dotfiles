@@ -1,6 +1,7 @@
 = Nix's home manager dotfiles
 
-Handle Zsh config and package installation. Dotfiles are managed with a private git bare repository using `dotfiles` shell alias.
+Minimal configuration which can be reused with more specialized flakes (like the private ones for my job).
+It handles Zsh and Vim config, with some CLI tools. Dotfiles are managed with a private git bare repository using `dotfiles` shell alias.
 
 == Installing nix package manager
 
@@ -23,7 +24,6 @@ cd nix-dotfiles
 ```
 
 == Init dotfiles
-
 
 ```
 initDotfiles git@github.com/scarisey/aPrivateDotfilesExample.git
