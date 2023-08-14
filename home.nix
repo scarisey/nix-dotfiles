@@ -30,23 +30,13 @@ in {
     ghq
     btop
     powertop
-    xclip
     poppler_utils #pdf conversions
     ttygif
     gifsicle
     rclone
     cryfs
     cht-sh
-
-    #gui
-    nixgl.nixGLIntel #FIXME only for laptop
-    keepassxc
-    conky
-    flameshot
-    timeshift
-    quickemu
-    quickgui
-    pavucontrol
+    perl536Packages.EmailOutlookMessage
 
     #dev    
     #c
@@ -56,7 +46,6 @@ in {
     luarocks
     #jvm
     temurin-bin-17
-    jetbrains.idea-community
     sbt
     scala-cli
     coursier
