@@ -154,4 +154,7 @@ in {
   home.file.".gruvbox.tmuxtheme" = {
     source = ./tmux/gruvbox.tmuxtheme;
   };
+  home.file.".config/ranger/rc.conf" = {
+    source = ./ranger/rc.conf;
+  };
 }
