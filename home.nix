@@ -151,4 +151,7 @@ in {
     extraConfig = "${ builtins.readFile ./vim/vimrc }";
   };
 
+  home.file.".gruvbox.tmuxtheme" = {
+    source = ./tmux/gruvbox.tmuxtheme;
+  };
 }
