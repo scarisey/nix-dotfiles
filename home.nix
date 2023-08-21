@@ -92,6 +92,7 @@ in {
     enableAutosuggestions = true;
     initExtra = ''
     eval $(thefuck --alias)
+    source $HOME/.customzsh.rc || true
     '';
 
     history = {
