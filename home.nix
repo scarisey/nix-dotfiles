@@ -86,9 +86,13 @@ in {
   };
 
   programs.zsh = {
+    #https://rycee.gitlab.io/home-manager/options.html#opt-programs.zsh.enable
     enable = true;
     enableCompletion = true;
     enableAutosuggestions = true;
+    initExtra = ''
+    eval $(thefuck --alias)
+    '';
 
     history = {
       share = true; # false -> every terminal has it's own history
