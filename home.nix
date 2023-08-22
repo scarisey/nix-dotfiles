@@ -1,4 +1,4 @@
-{pkgs,lib,config,withGUI,withIntel,...}:let
+{pkgs,lib,config,gui,intel,devtools,nvidia,...}:let
     npmGlobalDir = "$HOME/.npm-global";
 in { 
   programs.home-manager.enable = true;
@@ -39,7 +39,8 @@ in {
     cht-sh
     perl536Packages.EmailOutlookMessage
 
-    #dev    
+  ] 
+  ++ lib.optionals devtools [
     #c
     gcc
     #lua
@@ -56,10 +57,13 @@ in {
     nodejs
     cargo
   ]
-  ++ lib.optionals withIntel [
+  ++ lib.optionals intel [
     nixgl.nixGLIntel
   ]
-  ++ lib.optionals withGUI [
+  ++ lib.optionals nvidia [
+    nixgl.nixGLNvidia
+  ]
+  ++ lib.optionals gui [
     quickemu
     quickgui
 

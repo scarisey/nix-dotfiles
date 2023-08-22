@@ -9,19 +9,26 @@
   };
 
   outputs = {home-manager,nixpkgs,nixgl,...}:let
-    mkHomeManagerConf = {withGUI ? false,withIntel ? false}: home-manager.lib.homeManagerConfiguration {
+    mkFeatures = {
+      gui ? false,
+      devtools ? false,
+      intel ? false,
+      nvidia ? false,
+    }@x: x;
+    mkHomeManagerConf = features: home-manager.lib.homeManagerConfiguration {
         pkgs = import nixpkgs {
           system = "x86_64-linux";
           overlays = [ nixgl.overlay ];
         };
-        extraSpecialArgs = { inherit withGUI withIntel; };
+        extraSpecialArgs = mkFeatures features;
         modules = [ ./home.nix ];
       };
   in {
     defaultPackage.x86_64-linux = home-manager.defaultPackage.x86_64-linux;
     homeConfigurations = {
-      "sylvain" = mkHomeManagerConf {};
-      "sylvain@lscarisey" = mkHomeManagerConf { withGUI=true;withIntel=true;};
+      "sylvain@hyperion" = mkHomeManagerConf {gui=true;intel=true;};
+      "sylvain@titan" = mkHomeManagerConf {gui=true;nvidia=true;devtools=true;};
+      "sylvain@lscarisey" = mkHomeManagerConf {gui=true;intel=true;devtools=true;nvidia=false;};
     };
   };
 }
