@@ -1,4 +1,4 @@
-{pkgs,lib,config,...}:let
+{pkgs,lib,config,withGUI,withIntel,...}:let
     npmGlobalDir = "$HOME/.npm-global";
 in { 
   programs.home-manager.enable = true;
@@ -55,6 +55,23 @@ in {
     #others
     nodejs
     cargo
+  ]
+  ++ lib.optionals withIntel [
+    nixgl.nixGLIntel
+  ]
+  ++ lib.optionals withGUI [
+    quickemu
+    quickgui
+
+    alacritty
+    conky
+
+    timeshift
+    xclip
+    pavucontrol
+    flameshot
+
+    jetbrains.idea-community
   ];
 
   home.sessionVariables = {
