@@ -109,6 +109,7 @@ in {
         "docker"
         "docker-compose"
         "kubectl"
+        "helm"
         "sbt"
         "bgnotify"
         "fzf"
