@@ -16,13 +16,13 @@
           overlays = [ nixgl.overlay ];
         };
         extraSpecialArgs = mkFeatures features;
-        modules = [ ./home.nix ];
+        modules = [ ./home.nix ./gui.nix ./devtools.nix ];
       };
   in {
     defaultPackage.x86_64-linux = home-manager.defaultPackage.x86_64-linux;
     homeConfigurations = {
       "sylvain@hyperion" = mkHomeManagerConf [ "gui" "intel" ];
-      "sylvain@titan" = mkHomeManagerConf [ "gui" "nvidia" "devetools" ];
+      "sylvain@titan" = mkHomeManagerConf [ "gui" "nvidia" "devtools" ];
       "sylvain@lscarisey" = mkHomeManagerConf [ "gui" "intel" "devtools" ];
     };
   };

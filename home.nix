@@ -1,6 +1,4 @@
-{pkgs,lib,config,gui,devtools,intel,nvidia,...}:let
-    npmGlobalDir = "$HOME/.npm-global";
-in { 
+{pkgs,lib,config,intel,nvidia,...}:{ 
   programs.home-manager.enable = true;
   home.username = "sylvain";
   home.homeDirectory = "/home/sylvain";
@@ -40,42 +38,11 @@ in {
     perl536Packages.EmailOutlookMessage
 
   ] 
-  ++ lib.optionals devtools [
-    #c
-    gcc
-    #lua
-    lua
-    luarocks
-    #jvm
-    temurin-bin-17
-    sbt
-    scala-cli
-    coursier
-    maven
-    gradle
-    #others
-    nodejs
-    cargo
-  ]
   ++ lib.optionals intel [
     nixgl.nixGLIntel
   ]
   ++ lib.optionals nvidia [
     nixgl.nixGLNvidia
-  ]
-  ++ lib.optionals gui [
-    quickemu
-    quickgui
-
-    alacritty
-    conky
-
-    timeshift
-    xclip
-    pavucontrol
-    flameshot
-
-    jetbrains.idea-community
   ];
 
   home.sessionVariables = {
@@ -83,7 +50,6 @@ in {
     EDITOR = "vim";
   };
 
-  home.activation.npmSetPrefix = lib.hm.dag.entryAfter [ "reloadSystemd" ] "$DRY_RUN_CMD ${config.home.path}/bin/npm $VERBOSE_ARG set prefix ${npmGlobalDir}"; #then npm -g install should work
 
   home.shellAliases = {
     dotfiles="git --git-dir $GITDIR/dotfiles/ --work-tree=$HOME";
