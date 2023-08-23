@@ -10,7 +10,5 @@
     xclip
     pavucontrol
     flameshot
-
-    jetbrains.idea-community
   ];
 }
