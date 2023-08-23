@@ -1,4 +1,4 @@
-{pkgs,lib,config,gui,intel,devtools,nvidia,...}:let
+{pkgs,lib,config,gui,devtools,intel,nvidia,...}:let
     npmGlobalDir = "$HOME/.npm-global";
 in { 
   programs.home-manager.enable = true;

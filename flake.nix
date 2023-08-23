@@ -9,12 +9,7 @@
   };
 
   outputs = {home-manager,nixpkgs,nixgl,...}:let
-    mkFeatures = {
-      gui ? false,
-      devtools ? false,
-      intel ? false,
-      nvidia ? false,
-    }@x: x;
+    mkFeatures = xs: nixpkgs.lib.fold (x: z: z // { ${x}=true; } ) {gui=false;devtools=false;intel=false;nvidia=false;} xs;
     mkHomeManagerConf = features: home-manager.lib.homeManagerConfiguration {
         pkgs = import nixpkgs {
           system = "x86_64-linux";
@@ -26,9 +21,9 @@
   in {
     defaultPackage.x86_64-linux = home-manager.defaultPackage.x86_64-linux;
     homeConfigurations = {
-      "sylvain@hyperion" = mkHomeManagerConf {gui=true;intel=true;};
-      "sylvain@titan" = mkHomeManagerConf {gui=true;nvidia=true;devtools=true;};
-      "sylvain@lscarisey" = mkHomeManagerConf {gui=true;intel=true;devtools=true;nvidia=false;};
+      "sylvain@hyperion" = mkHomeManagerConf [ "gui" "intel" ];
+      "sylvain@titan" = mkHomeManagerConf [ "gui" "nvidia" "devetools" ];
+      "sylvain@lscarisey" = mkHomeManagerConf [ "gui" "intel" "devtools" ];
     };
   };
 }
