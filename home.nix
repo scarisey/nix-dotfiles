@@ -79,7 +79,7 @@
     enableAutosuggestions = true;
     initExtra = ''
     eval $(thefuck --alias)
-    source $HOME/.customzsh.rc || true
+    source $HOME/.customzsh.rc &> /dev/null|| true 
     '';
 
     history = {
