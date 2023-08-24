@@ -1,4 +1,5 @@
 {pkgs,lib,config,intel,nvidia,...}:{ 
+  nixpkgs.config.allowUnfreePredicate = (pkg: true);
   programs.home-manager.enable = true;
   home.username = "sylvain";
   home.homeDirectory = "/home/sylvain";
@@ -42,7 +43,7 @@
     nixgl.nixGLIntel
   ]
   ++ lib.optionals nvidia [
-    nixgl.nixGLNvidia
+    nixgl.auto.nixGLNvidia
   ];
 
   home.sessionVariables = {

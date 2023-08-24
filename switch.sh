@@ -2,4 +2,4 @@
 SCRIPTNAME=$(basename "$0")
 RUNDIR=$(dirname "$(realpath $0)")
 
-nix run ${RUNDIR} -- switch --flake ${RUNDIR}
+nix run ${RUNDIR} -- switch --impure --flake ${RUNDIR}
