@@ -4,13 +4,12 @@ in lib.mkIf devtools {
   home.packages = with pkgs; [
     #c
     gcc
+    glibc
     #lua
     lua
     luarocks
     #jvm
     temurin-bin-17
-    sbt
-    scala-cli
     coursier
     maven
     gradle
