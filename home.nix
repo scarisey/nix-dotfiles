@@ -163,4 +163,5 @@
   home.file.".config/ranger/rc.conf" = {
     source = ./ranger/rc.conf;
   };
+
 }

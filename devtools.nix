@@ -10,6 +10,8 @@ in lib.mkIf devtools {
     luarocks
     #jvm
     temurin-bin-17
+    sbt
+    scala-cli
     coursier
     maven
     gradle
@@ -20,6 +22,10 @@ in lib.mkIf devtools {
   ++ lib.optionals gui [
     jetbrains.idea-community
   ];
+
+  home.sessionVariables = lib.mkAfter {
+    JAVA_HOME = "${pkgs.temurin-bin-17}";
+  };
 
   home.activation.npmSetPrefix = lib.hm.dag.entryAfter [ "reloadSystemd" ] "$DRY_RUN_CMD ${config.home.path}/bin/npm $VERBOSE_ARG set prefix ${npmGlobalDir}"; #then npm -g install should work
 }
